@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #00b4db, #0083b0);
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.search-box {
+    margin: 20px 0;
+}
+
+input[type="text"] {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    width: 60%;
+    margin-right: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #0083b0;
+}
+
+button {
+    padding: 12px 30px;
+    font-size: 16px;
+    background-color: #0083b0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #006687;
+}
+
+#resultado {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+#resultado p {
+    margin: 10px 0;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#resultado strong {
+    color: #0083b0;
+    font-size: 24px;
+}
+
+.weather-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.weather-item {
+    padding: 15px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-weight: bold;
+}

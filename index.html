@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Temperatura</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🌡️ Consulta de Temperatura</h1>
+        <div class="search-box">
+            <input type="text" id="cidade" placeholder="Digite o nome da cidade...">
+            <button onclick="buscar()">Buscar</button>
+        </div>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        async function buscar() {
+            const cidade = document.getElementById("cidade").value;
+
+            if (!cidade) {
+                alert("Por favor, digite uma cidade.");
+                return;
+            }
+
+            try {
+                const url = `https://wttr.in/${encodeURIComponent(cidade)}?format=j1`;
+                
+                document.getElementById("resultado").innerHTML = "Buscando dados...";
+                
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
+                const temp = dados.current_condition[0].temp_C;
+                const condicao = dados.current_condition[0].weatherDesc[0].value;
+                const umidade = dados.current_condition[0].humidity;
+                const cidadeNome = dados.nearest_area[0].areaName[0].value;
+
+                document.getElementById("resultado").innerHTML = `
+                    <p><strong>${cidadeNome}</strong></p>
+                    <div class="weather-info">
+                        <div class="weather-item">
+                            <p>🌡️ Temperatura</p>
+                            <p>${temp}°C</p>
+                        </div>
+                        <div class="weather-item">
+                            <p>🌤️ Condição</p>
+                            <p>${condicao}</p>
+                        </div>
+                        <div class="weather-item">
+                            <p>💧 Umidade</p>
+                            <p>${umidade}%</p>
+                        </div>
+                    </div>
+                `;
+            } catch (erro) {
+                document.getElementById("resultado").innerHTML = 
+                    '<p class="error-message">Erro ao buscar dados. Tente novamente.</p>';
+                console.error(erro);
+            }
+        }
+    </script>
+</body>
+</html>
